@@ -20,24 +20,24 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestPoint(t *testing.T) {
+func TestPointF(t *testing.T) {
 	{
-		lhs := Point{28, 42}
-		rhs := Point{12, 23}
+		lhs := PointF{28.4, 42.3}
+		rhs := PointF{12.9, 23.1}
 
 		add := lhs.Add(rhs)
-		assert.Equal(t, 40, add.X)
-		assert.Equal(t, 65, add.Y)
+		assert.InDelta(t, 41.3, add.X, 0.00001)
+		assert.InDelta(t, 65.4, add.Y, 0.00001)
 
 		sub := lhs.Sub(rhs)
-		assert.Equal(t, 16, sub.X)
-		assert.Equal(t, 19, sub.Y)
+		assert.InDelta(t, 15.5, sub.X, 0.00001)
+		assert.InDelta(t, 19.2, sub.Y, 0.00001)
 	}
 	{
-		p := Point{28, 42}
-		p.AddAssign(Point{3, 5})
-		p.SubAssign(Point{8, 19})
-		assert.Equal(t, 23, p.X)
-		assert.Equal(t, 28, p.Y)
+		p := PointF{28.4, 42.3}
+		p.AddAssign(PointF{3.2, 5.1})
+		p.SubAssign(PointF{8.4, 19.2})
+		assert.InDelta(t, 23.2, p.X, 0.00001)
+		assert.InDelta(t, 28.2, p.Y, 0.00001)
 	}
 }

@@ -14,59 +14,59 @@
 
 package geometry
 
-type Point struct {
-	X int
-	Y int
+type PointF struct {
+	X float64
+	Y float64
 }
 
-func (p *Point) Add(other Point) Point {
-	return Point{
+func (p *PointF) Add(other PointF) PointF {
+	return PointF{
 		X: p.X + other.X,
 		Y: p.Y + other.Y,
 	}
 }
 
-func (p *Point) Sub(other Point) Point {
-	return Point{
+func (p *PointF) Sub(other PointF) PointF {
+	return PointF{
 		X: p.X - other.X,
 		Y: p.Y - other.Y,
 	}
 }
 
-func (p *Point) Mul(factor float64) Point {
-	return Point{
-		X: int(float64(p.X) * factor),
-		Y: int(float64(p.Y) * factor),
+func (p *PointF) Mul(factor float64) PointF {
+	return PointF{
+		X: p.X * factor,
+		Y: p.Y * factor,
 	}
 }
 
-func (p *Point) Div(divisor float64) Point {
-	return Point{
-		X: int(float64(p.X) / divisor),
-		Y: int(float64(p.Y) / divisor),
+func (p *PointF) Div(divisor float64) PointF {
+	return PointF{
+		X: p.X / divisor,
+		Y: p.Y / divisor,
 	}
 }
 
-func (p *Point) AddAssign(other Point) *Point {
+func (p *PointF) AddAssign(other PointF) *PointF {
 	p.X += other.X
 	p.Y += other.Y
 	return p
 }
 
-func (p *Point) SubAssign(other Point) *Point {
+func (p *PointF) SubAssign(other PointF) *PointF {
 	p.X -= other.X
 	p.Y -= other.Y
 	return p
 }
 
-func (p *Point) MulAssign(factor float64) *Point {
+func (p *PointF) MulAssign(factor float64) *PointF {
 	point := p.Mul(factor)
 	p.X = point.X
 	p.Y = point.Y
 	return p
 }
 
-func (p *Point) DivAssign(divisor float64) *Point {
+func (p *PointF) DivAssign(divisor float64) *PointF {
 	point := p.Div(divisor)
 	p.X = point.X
 	p.Y = point.Y
